@@ -4,31 +4,33 @@ const mongoUri = "mongodb+srv://farazpachu777:farazpachu777@basic-crud-operation
 const Product = require("./models/productModel.js")
 const app = express()
 const productRoute = require("./routes/productsRoute.js")
+const userRoute = require("./routes/userRoute.js")
+const classRoute = require("./routes/classRoute.js")
+
 
 mongoose.connect(mongoUri)
 .then(()=>{
     console.log("MongoDB Connected.");
-}).catch(()=>{
-    console.log("MongoDB Connection Failed.");
+}).catch((err)=>{
+    console.log("MongoDB Connection Failed.",err);
 })
 
 // middleware
-app.use(express.json())
-app.use(express.urlencoded({extended:false}))
+app.use(express.json()); // Parses incoming requests with JSON payloads
+app.use(express.urlencoded({ extended: false })); // Parses incoming requests with URL-encoded payloads
 
 
-// route
+
+// products
 app.use("/api/products",productRoute)
+// users
+app.use("/api/users",userRoute)
+// class
+app.use("/api/class",classRoute)
 
 app.get('/',(req, res)=>{
-    res.send('Hi there, message from Backend')
+    res.send('Hi there, message from Backend') 
 })
-
-
-
-
-
-
 
 app.listen(5000,()=>{
     console.log("Server running on port 5000")
