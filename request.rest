@@ -1,0 +1,24 @@
+// Register a new User 
+# POST  http://localhost:5000/api/users/register
+
+# Content-Type: application/json
+# {
+#     "name": "faraz shafi",
+#     "age": 19,
+#     "place": "patla",
+#     "gmail": "farazpachu777@gmail.com",
+#     "password": "pachu",
+#     "phone": 9188773788
+# }
+
+
+
+POST http://localhost:5000/api/users/login
+
+Content-Type: application/json
+{
+    "gmail": "farazpachu777@gmail.com",
+    "password": "dadi"
+}
+
+
